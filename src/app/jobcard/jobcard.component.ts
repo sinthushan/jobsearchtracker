@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { JobService } from './job.service';
 
 @Component({
   selector: 'app-jobcard',
@@ -9,4 +10,6 @@ import { Component } from '@angular/core';
 })
 export class JobcardComponent {
 
+  
+  
 }
