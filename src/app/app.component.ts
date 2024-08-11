@@ -1,22 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SwimlaneComponent } from "./swimlane/swimlane.component";
 import { JobService } from './jobcard/job.service';
 import { Job } from './jobcard/job.model';
+import { JobcardComponent } from "./jobcard/jobcard.component";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SwimlaneComponent],
+  imports: [RouterOutlet, SwimlaneComponent, JobcardComponent, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent  {
+
   title = 'jobsearchtracker';
-  jobs: Job[] = []
+  private jobservice = inject(JobService);
+  jobs = this.jobservice.allJobs;
   user = '1'
-  constructor(public jobservice: JobService){
-    this.jobs =  jobservice.getJobs(this.user)
+  newJobTitle = signal('');
+  newJobCompany = signal('');
+  newJobComment = signal('');
+
+
+  onSubmit() {
+    console.log("yo")
+    this.jobservice.addJOb({
+      jobTitle: this.newJobTitle(),
+      company: this.newJobCompany(),
+      comment: this.newJobComment()
+    })
+
   }
 
 

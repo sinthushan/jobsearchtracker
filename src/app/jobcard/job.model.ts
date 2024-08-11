@@ -1,5 +1,3 @@
-import { Timestamp } from "rxjs";
-
 export interface Job{
     id: number;
     user: string;

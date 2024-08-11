@@ -1,0 +1,27 @@
+.jobCard{
+    display: flex;
+    flex-direction: column;
+    background-color: #9e829c;
+    color: #f0eff4;
+    border-radius: 5px;
+    width: 15rem;
+    box-shadow:  10px 5px 5px #3a3e3b;
+}
+
+.jobCard-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #291528;
+    color: #9e829c;
+    padding: 0.5rem 1rem;
+}
+
+.jobCard-body{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+.jobCard-body>h1{
+    margin: 0;
+}

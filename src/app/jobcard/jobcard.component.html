@@ -1,3 +1,10 @@
-<div>
-    
-</div>
+<article class="jobCard">
+  <div class="jobCard-header">
+    <span> {{job()?.company}}</span>
+    <span>{{status() | uppercase}}</span>
+  </div>
+  <div class="jobCard-body">
+   <h1>{{job()?.jobTitle}}</h1>
+   <p>{{job()?.comment}}</p> 
+  </div>
+</article>

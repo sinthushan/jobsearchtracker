@@ -1,1 +1,21 @@
 
+@for (job of jobs(); track job.id) {
+    <app-jobcard [job] = "job" [status]="'applied'"></app-jobcard>
+}
+<form (ngSubmit)="onSubmit()">
+    <p>
+      <label for="jobTitle">Job Title</label>
+      <input id="jobTitle" name="jobTitle" [(ngModel)]="newJobTitle"/>
+    </p>
+    <p>
+        <label for="jobCompany">Company</label>
+        <input id="jobCompany" name="jobCompany" [(ngModel)]="newJobCompany"/>
+    </p>
+    <p>
+        <label for="jobComment">Comment</label>
+        <input id="jobComment" name="jobComment" [(ngModel)]="newJobComment"/>
+    </p>
+    <p class="actions">
+      <button>Save</button>
+    </p>
+</form>
