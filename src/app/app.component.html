@@ -1,7 +1,5 @@
 
-@for (job of jobs(); track job.id) {
-    <app-jobcard [job] = "job" [status]="'applied'"></app-jobcard>
-}
+
 <form (ngSubmit)="onSubmit()">
     <p>
       <label for="jobTitle">Job Title</label>
@@ -19,3 +17,14 @@
       <button>Save</button>
     </p>
 </form>
+@for (job of jobs(); track job.id) {
+  <div class="jobRow">
+    @for (stage of job.stages; track stage){
+      <div class="jobcard-container">
+        <app-jobcard [job] = "job" [status]="stage.stage"></app-jobcard>
+        <app-nextphase [jobID]="job.id"></app-nextphase>
+      </div>
+    }
+  </div>
+ 
+}
