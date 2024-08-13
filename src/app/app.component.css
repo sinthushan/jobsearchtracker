@@ -22,11 +22,31 @@ form{
     align-items: center;
     margin: 2rem 10rem;
     background-color: #3a3e3b;
-    color: #f0eff4;
+    color: #9e829c;
     border-radius: 10px;
 }
 form>p{
-    margin: 1rem 2rem;   
+    margin: 1rem 2rem;
+    border: solid #9e829c;
+    border-width: 0 0 1px 0;   
+}
+
+input, input:focus{
+    background-color: #3a3e3b;
+    border: none;
+    color: #9e829c;
+}
+
+input:focus{
+    outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #3a3e3b inset !important;
+    -webkit-text-fill-color: #9e829c !important;
 }
 
 button {
@@ -42,7 +62,8 @@ button:hover{
     box-shadow: 0px 0px 3px 3px #9e829c;
 }
 
-
-input{
-    margin-left: 0.5rem;
+line{
+    stroke-width:2px;
+    filter: drop-shadow(10px 3px 2px #3a3e3b);
 }
+

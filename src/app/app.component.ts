@@ -33,7 +33,9 @@ export class AppComponent  {
       company: this.newJobCompany(),
       comment: this.newJobComment()
     })
-
+    this.newJobTitle.set('');
+    this.newJobCompany.set('');
+    this.newJobComment.set('');
   }
 
   
