@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SwimlaneComponent } from "./swimlane/swimlane.component";
 import { JobService } from './jobcard/job.service';
@@ -6,15 +6,18 @@ import { Job } from './jobcard/job.model';
 import { JobcardComponent } from "./jobcard/jobcard.component";
 import { FormsModule } from '@angular/forms';
 import { NextphaseComponent } from "./jobcard/nextphase/nextphase.component";
+import { UpdateformComponent } from "./jobcard/updateform/updateform.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SwimlaneComponent, JobcardComponent, FormsModule, NextphaseComponent],
+  imports: [RouterOutlet, SwimlaneComponent, JobcardComponent, FormsModule, NextphaseComponent, UpdateformComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent  {
+
+  
 
 
   title = 'jobsearchtracker';
@@ -24,7 +27,10 @@ export class AppComponent  {
   newJobTitle = signal('');
   newJobCompany = signal('');
   newJobComment = signal('');
-
+  
+  @ViewChild('modal') updateModal!: ElementRef;
+  
+  newStatus = signal('');
 
   onSubmit() {
     console.log("yo")
@@ -38,7 +44,13 @@ export class AppComponent  {
     this.newJobComment.set('');
   }
 
+  unhideModal() {
+    (this.updateModal.nativeElement as HTMLDialogElement).showModal()
+  }
   
+  updateStatus() {
+    throw new Error('Method not implemented.');
+  }
 
 
 }

@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, EventEmitter, inject, input, Output } from '@angular/core';
 import { JobService } from '../job.service';
 
 @Component({
@@ -11,8 +11,10 @@ import { JobService } from '../job.service';
 export class NextphaseComponent {
   private jobservice = inject(JobService);
   jobID = input<number>();
+  @Output() unhideModal = new EventEmitter<void>()
   onClick($event: MouseEvent) {
-    this.jobservice.changeStatus(this.jobID()!, "Changed")
+    this.unhideModal.emit()
+    //this.jobservice.changeStatus(this.jobID()!, "Changed")
   }
 
 }
