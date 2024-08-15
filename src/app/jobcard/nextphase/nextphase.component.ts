@@ -9,12 +9,12 @@ import { JobService } from '../job.service';
   styleUrl: './nextphase.component.css'
 })
 export class NextphaseComponent {
-  private jobservice = inject(JobService);
+  
   jobID = input<number>();
-  @Output() unhideModal = new EventEmitter<void>()
+  @Output() unhideModal = new EventEmitter<number>()
   onClick($event: MouseEvent) {
-    this.unhideModal.emit()
-    //this.jobservice.changeStatus(this.jobID()!, "Changed")
+    
+    this.unhideModal.emit(this.jobID())
   }
 
 }

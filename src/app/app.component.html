@@ -1,16 +1,6 @@
 
 
-<dialog #modal>
-  <form (ngSubmit)="updateStatus()">
-    <p>
-      <label for="newStatus">Status  :</label>
-      <input id="newStatus" name="newStatus" [(ngModel)]="newStatus"/>
-    </p>
-    <p class="update">
-      <button>Save</button>
-    </p>
-  </form>
-</dialog>
+<dialog jobUpdate [jobID]="jobID()"></dialog>
 
 <form (ngSubmit)="onSubmit()">
     <p>
@@ -35,7 +25,7 @@
       <div class="jobcard-container">
         <app-jobcard [job] = "job" [status]="stage.stage"></app-jobcard>
         @if (last) {
-          <app-nextphase [jobID]="job.id" (unhideModal)="unhideModal()"></app-nextphase>
+          <app-nextphase [jobID]="job.id" (unhideModal)="unhideModal($event)"></app-nextphase>
         }@else{
           <svg width="100" height="50"><line x1="0" y1="25" x2="100" y2="25" stroke="black"/></svg>
         }

@@ -30,8 +30,11 @@ export class JobService{
     }
 
     changeStatus(jobID: number, stage: string){
-       const index =  this.jobs().findIndex(job => job.id == jobID)
-       this.jobs()[index].stages.push({stage: stage, date: 'date' }) 
+        console.log(this.jobs())
+        const index =  this.jobs().findIndex(job => job.id == jobID)
+        console.log(index)
+        console.log(this.jobs()[index])
+        this.jobs()[index].stages.push({stage: stage, date: 'date' }) 
     }
 
 }

@@ -1,3 +1,9 @@
-<dialog>
-    
-</dialog>
+<form (ngSubmit)="updateStatus()">
+    <p>
+      <label for="newStatus">Status  :</label>
+      <input id="newStatus" name="newStatus" [(ngModel)]="newStatus"/>
+    </p>
+    <p class="update">
+      <button>Save</button>
+    </p>
+</form>

@@ -28,12 +28,11 @@ export class AppComponent  {
   newJobCompany = signal('');
   newJobComment = signal('');
   
-  @ViewChild('modal') updateModal!: ElementRef;
+  @ViewChild(UpdateformComponent) updateModal!: UpdateformComponent;
   
   newStatus = signal('');
-
+  jobID= signal(0);
   onSubmit() {
-    console.log("yo")
     this.jobservice.addJOb({
       jobTitle: this.newJobTitle(),
       company: this.newJobCompany(),
@@ -44,13 +43,10 @@ export class AppComponent  {
     this.newJobComment.set('');
   }
 
-  unhideModal() {
-    (this.updateModal.nativeElement as HTMLDialogElement).showModal()
+  unhideModal(job: number) {
+    this.jobID.set(job)
+    this.updateModal.dialog.showModal()
   }
   
-  updateStatus() {
-    throw new Error('Method not implemented.');
-  }
-
-
+ 
 }
