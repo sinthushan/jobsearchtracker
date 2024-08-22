@@ -19,7 +19,7 @@
       <button>Save</button>
     </p>
 </form>
-@for (job of jobs(); track job.id) {
+@for (job of jobs; track job.id) {
   <div class="jobRow">
     @for (stage of job.stages; track stage; let last = $last){
       <div class="jobcard-container">

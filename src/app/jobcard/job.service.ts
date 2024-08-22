@@ -5,36 +5,37 @@ import { Job, Stage } from "./job.model";
 
 @Injectable({providedIn: "root"})
 export class JobService{
-    private jobs = signal<Job[]>([]);
-    allJobs = this.jobs.asReadonly()
+    private jobs: Job[] = [];
 
-    getJobs(user: string): Job[]{
-        return this.jobs().filter(job => job.user = user)
+    url = "http://127.0.0.1:8000/api/v1/jobs/"
+    async getJobs(user: string): Promise<Job[]>{
+        const data = await fetch(this.url);
+        return await data.json() ?? []
     }
 
     addJOb(job: {jobTitle : string; company: string; comment: string;}){
         let stage: Stage = {
-            stage: 'applied',
-            date: Date.now().toString(),
+            stage: 'applied'
+
         }
         let newJob: Job = {
             id: Math.random(),
-            user:  '1',
-            jobTitle : job.jobTitle,
+            applicant:  '1',
+            title : job.jobTitle,
             company: job.company,
             stages: [stage],
-            comment: job.comment
+
         }
-        this.jobs().push(newJob)
+        this.jobs.push(newJob)
 
     }
 
     changeStatus(jobID: number, stage: string){
-        console.log(this.jobs())
-        const index =  this.jobs().findIndex(job => job.id == jobID)
+        console.log(this.jobs)
+        const index =  this.jobs.findIndex(job => job.id == jobID)
         console.log(index)
-        console.log(this.jobs()[index])
-        this.jobs()[index].stages.push({stage: stage, date: 'date' }) 
+        console.log(this.jobs[index])
+        this.jobs[index].stages.push({stage: stage }) 
     }
 
 }

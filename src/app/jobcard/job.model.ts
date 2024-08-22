@@ -1,16 +1,17 @@
 export interface Job{
     id: number;
-    user: string;
-    jobTitle : string;
+    applicant: string;
+    title : string;
     company: string;
     stages: Stage[];
-    comment: string;
+    applied_date?: string;
+    modefied_date?: string;
 }
 
 export interface Stage{
     stage: string;
-    date: string;
-    interviewDetails?: Interview;
+    round?: number;
+    comment?: string;
 }
 
 export interface Interview{

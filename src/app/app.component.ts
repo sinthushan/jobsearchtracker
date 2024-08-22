@@ -22,16 +22,24 @@ export class AppComponent  {
 
   title = 'jobsearchtracker';
   private jobservice = inject(JobService);
-  jobs = this.jobservice.allJobs;
+  jobs: Job[] = []
   user = '1'
   newJobTitle = signal('');
   newJobCompany = signal('');
   newJobComment = signal('');
   
+  
+
   @ViewChild(UpdateformComponent) updateModal!: UpdateformComponent;
   
   newStatus = signal('');
   jobID= signal(0);
+
+
+  constructor(){
+     this.jobservice.getJobs("1").then((jobs) => this.jobs = jobs)
+  }
+
   onSubmit() {
     this.jobservice.addJOb({
       jobTitle: this.newJobTitle(),
